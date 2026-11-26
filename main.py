@@ -15,6 +15,8 @@ REVIEW = (
 
 def main() -> None:
     assert 1 <= len(REVIEW) <= 120, f"review is {len(REVIEW)} chars"
+    assert REVIEW.isascii(), "review must be ASCII only"
+    assert not REVIEW.endswith("\n"), "review must not end with a newline"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(REVIEW)
